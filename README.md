@@ -49,3 +49,6 @@ Python library for controlling the position of the crazyflie 2.0.
 - Takeoff veloocity control
 - Guidance selector
 - Sub to crazyflie and log
+
+# Purpose of the fork
+- Couldn't edit the original repo on the OUIDEAS page, thus this fork exits
