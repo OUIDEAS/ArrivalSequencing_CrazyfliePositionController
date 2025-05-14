@@ -4,6 +4,7 @@ from multiprocessing import Queue
 import threading
 from PID_CLASS import PID_CLASS
 from viconStream import viconStream
+from vicon_dssdk import ViconDataStream
 from logger import logger
 from waypointManager import waypointManager
 
@@ -139,8 +140,8 @@ class cfControlClass():
     def startLog(self):
         self.logger = logger(self.logName,self.QueueList)
 
-    def startPlots(self):
-        self.Plots = responsePlots(self.QueueList)
+    # def startPlots(self):
+    #     self.Plots = responsePlots(self.QueueList)
 
 
 

@@ -1,4 +1,6 @@
-from python_vicon import PyVicon
+# from python_vicon import PyVicon
+import vicon_dssdk
+from vicon_dssdk import ViconDataStream
 import numpy as np
 
 class viconClient():
@@ -8,10 +10,11 @@ class viconClient():
 
 
     def vicon_connect(self):
-        client = PyVicon()
-        client.connect(self.ip, self.port)
+        # client = PyVicon() , self.port
+        client = ViconDataStream.Client()
+        client.Connect(self.ip)
 
-        if not client.isConnected():
+        if not client.IsConnected():
             print("Failed to connect to Vicon!")
             return 1
         else:
@@ -21,15 +24,21 @@ class viconClient():
 
     def getPos(self,name):
         client = self.client
-        client.frame()
-        subjects = client.subjects()
+        # client.frame()
+        client.GetFrame()
+        # subjects = client.subjects()
+        subjects = client.GetSubjectNames()
+        print(subjects)
         trans_scale = 1000
         X = {}
         while True:
             for s in subjects:
                 if (s == name):
-                    trans = client.translation(s)
-                    if (trans[0] == 0.0 and trans[1] == 0.0 and trans[2] == 0.0):
+                    # trans = client.translation(s)
+                    # trans = client.get
+                    trans = client.GetSegmentGlobalTranslation(s, s)
+                    print(trans)
+                    if (trans[0][0] == 0.0 and trans[0][1] == 0.0 and trans[0][2] == 0.0):
                         # print('dead packet')
                         x_ENU = False
                         y_ENU = False
@@ -41,7 +50,8 @@ class viconClient():
                         X["z"] = z_ENU
                         return X
                     else:
-                        rot = client.rotation(s)
+                        # rot = client.rotation(s)
+                        rot = client.GetSegmentGlobalRotationEulerXYZ(s, s)
                         x_ENU = trans[0] / trans_scale
                         y_ENU = trans[1] / trans_scale
                         z_ENU = trans[2] / trans_scale

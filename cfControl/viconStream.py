@@ -4,7 +4,6 @@ import viconClient
 
 from utilities import fakeviconClient
 
-
 class viconStream():
     # def __init__(self, name,q,error_queue):
     def __init__(self, name,QueueList,fakeVicon):
@@ -42,7 +41,7 @@ class viconStream():
         if self.useFakeVicon:
             vc = fakeviconClient.fakeviconClient()
         else:
-            vc = viconClient.viconClient("192.168.0.197",801)
+            vc = viconClient.viconClient("192.168.1.6",801)
 
         vc.vicon_connect()
 

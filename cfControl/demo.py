@@ -14,7 +14,7 @@ import numpy as np
 #fakeVicon          [bool]      Fake vicon data for testing purposes
 
 alt = 0.3
-uav = cfControlClass(uavName='CF_1',dispUpdateRate=False,logEnabled=False,logName='scenario4',dispMessageMonitor=False)
+uav = cfControlClass(uavName='frank',dispUpdateRate=False,logEnabled=False,logName='scenario4',dispMessageMonitor=False)
 time.sleep(2)
 while uav.active:
 

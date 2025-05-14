@@ -8,12 +8,10 @@ SET VS90COMNTOOLS=%VS140COMNTOOLS%
 set MSSDK=1
 set DISTUTILS_USE_SDK=1
 
-::C:\Python27\python.exe setup.py build
-C:\Users\LAB_PC\Desktop\WPy64-3771\python-3.7.7.amd64\python.exe setup.py build
+REM C:\WinPython-64bit-3.6.2.0Qt5\python-3.6.2.amd64\python.exe setup.py build
+%USERPROFILE%\Miniconda3\python.exe setup.py build
 if errorlevel 0 (
-    ::copy build\lib.win32-2.7\pyvicon.pyd .\
-    copy build\lib.win-amd64-3.7\pyvicon.pyd .\
-
+    copy C:\Users\Jay\Desktop\PyVicon\python_vicon\build\lib.win32-3.6\pyvicon.cp36-win32.pyd .\pyvicon.pyd
 )
 echo %errorlevel%
 pause

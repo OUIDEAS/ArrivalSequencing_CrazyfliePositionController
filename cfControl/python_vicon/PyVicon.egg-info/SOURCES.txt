@@ -1,0 +1,6 @@
+pyvicon_class.cpp
+setup.py
+PyVicon.egg-info/PKG-INFO
+PyVicon.egg-info/SOURCES.txt
+PyVicon.egg-info/dependency_links.txt
+PyVicon.egg-info/top_level.txt
